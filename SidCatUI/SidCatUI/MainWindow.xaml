@@ -10,37 +10,69 @@
         Width="525" MinWidth="525"
         Background="Azure">
     <Viewbox Stretch="Fill">
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowGridLines="True" Background="AliceBlue">
-        <Grid.RowDefinitions>
-            <RowDefinition ToolTip="Betalningssättnummer" Height="10*"/>
-            <RowDefinition ToolTip="Benämning" Height="10*"/>
-            <RowDefinition ToolTip="Funktion" Height="10*"/>
-            <RowDefinition ToolTip="Kontonummer" Height="10*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition ToolTip="Ledtexter" Width="103*" MinWidth="103"/>
-            <ColumnDefinition ToolTip="Input-fält" Width="292*" MinWidth="292"/>
-            <ColumnDefinition ToolTip="Knappar" Width="122"/>
-        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"           Background="AliceBlue">
+            <!--ShowGridLines="True"-->
+            <Grid.RowDefinitions>
+                <RowDefinition ToolTip="Betalningssättnummer" Height="10*"/>
+                <RowDefinition ToolTip="Benämning" Height="10*"/>
+                <RowDefinition ToolTip="Funktion" Height="10*"/>
+                <RowDefinition ToolTip="Kontonummer" Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ToolTip="Ledtexter" Width="103*" MinWidth="103"/>
+                <ColumnDefinition ToolTip="Input-fält" Width="292*" MinWidth="292"/>
+                <ColumnDefinition ToolTip="Knappar" Width="122"/>
+            </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Betalnr:</Label>
-        <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="10,9,0,9" TextWrapping="Wrap" VerticalAlignment="Center" Width="30" BorderThickness="3"/>
-        <Button x:Name="btnNew" Content="F2=Ny/Sök" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,4,9" Width="112"/>
-        <Button x:Name="btnPrevious" Content="PgUp=Föregående" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,4,9" Width="112"/>
+            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Betalnr:</Label>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="4" TextWrapping="NoWrap" VerticalAlignment="Center" Width="30" BorderThickness="3"/>
+                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" >Spärrat</CheckBox>
+                <Button x:Name="btnNew" HorizontalAlignment="Right" Margin="4" Width="112">F2=Ny/Sök</Button>
+            </StackPanel>
+            <Button x:Name="btnPrevious" Content="PgUp=Föregående" Grid.Column="2" Grid.Row="0" Margin="4" Width="112"/>
 
-        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Benämning:</Label>
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <TextBox x:Name="tbDescription" HorizontalAlignment="Stretch" Height="22" Margin="10,9,0,9" TextWrapping="Wrap" Width="160" BorderThickness="3" VerticalAlignment="Center"/>
-            <CheckBox Content="Spärrat" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center"/>
-        </StackPanel>
-        <Button x:Name="btnNext" Content="PgDn=Nästa" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Margin="4" Width="112"/>
+            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Benämning:</Label>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="22" Margin="4" Width="200" BorderThickness="3" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Button x:Name="btnNext" Content="PgDn=Nästa" Grid.Column="2" Grid.Row="1" Margin="4" Width="112"/>
 
-        <Label Grid.Column="0" Grid.Row="2" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Funktion:</Label>
-        
-        <Label Grid.Column="0" Grid.Row="3" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
-        <Label x:Name="lblWindowWidth" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding Width, ElementName=myWindow}" />
-        <Label x:Name="lblWindowHeight" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />
-        <Label Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />
-    </Grid>
+            <Label Grid.Column="0" Grid.Row="2" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Funktion:</Label>
+            <!--<StackPanel Grid.Column="1" Grid.Row="2" Margin="4">-->
+            <ComboBox Grid.Column="1" Grid.Row="2" Margin="4" SelectedIndex="0">
+                <ComboBoxItem>(Välj funktion 1 - 6)</ComboBoxItem>
+                <ComboBoxItem>1. Kontant och övriga, (check och kort man.)</ComboBoxItem>
+                <ComboBoxItem>2. Firmakort online, samtliga onlinekort</ComboBoxItem>
+                <ComboBoxItem>3. Smitning</ComboBoxItem>
+                <ComboBoxItem>4. Fakturering internt. Kontosätts direkt vid betalningen</ComboBoxItem>
+                <ComboBoxItem>5. Rabattkupong mm. Kontosätts direkt vid betalningen</ComboBoxItem>
+                <ComboBoxItem>6. Firmafinans bonuscheck. Endast om betalningsmedel</ComboBoxItem>
+            </ComboBox>
+            <!--</StackPanel>-->
+            <Button Grid.Column="2" Grid.Row="2" Margin="4">F5=Utskrift</Button>
+
+            <Label Grid.Column="0" Grid.Row="3" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="4" >
+                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+                    <Label HorizontalAlignment="Left">Baskonto:</Label>
+                    <TextBox >2331K</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="100" Margin="4">
+                    <Label HorizontalAlignment="Left">Konstnadsställe:</Label>
+                    <TextBox ></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+                    <Label HorizontalAlignment="Left">Produkt:</Label>
+                    <TextBox ></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+                    <Label HorizontalAlignment="Left">Projekt:</Label>
+                    <TextBox ></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <!--<Label x:Name="lblWindowWidth" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding Width, ElementName=myWindow}" />
+        <Label x:Name="lblWindowHeight" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />-->
+        </Grid>
     </Viewbox>
 </Window>
