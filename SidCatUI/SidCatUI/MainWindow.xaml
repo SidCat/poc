@@ -1,37 +1,44 @@
-﻿<Window x:Class="SidCatUI.MainWindow"
+﻿<Window x:Class="SidCatUI.MainWindow" x:Name="myWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SidCatUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="SidCat PoC" SizeToContent="Height" Width="525"
         Background="Azure">
-    <Grid>
+    <Viewbox>
+    <Grid Height="auto" ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition ToolTip="Betalningssättnummer" Height="39"/>
-            <RowDefinition ToolTip="Benämning" Height="39"/>
-            <RowDefinition ToolTip="Funktion" Height="39"/>
-            <RowDefinition ToolTip="Kontonummer" Height="39"/>
+            <RowDefinition ToolTip="Betalningssättnummer" Height="39*"/>
+            <RowDefinition ToolTip="Benämning" Height="39*"/>
+            <RowDefinition ToolTip="Funktion" Height="39*"/>
+            <RowDefinition ToolTip="Kontonummer" Height="39*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition ToolTip="Ledtexter" Width="103*"/>
-            <ColumnDefinition ToolTip="Input-fält" Width="276*"/>
-            <ColumnDefinition ToolTip="Knappar" Width="138*"/>
+            <ColumnDefinition ToolTip="Ledtexter" Width="103"/>
+            <ColumnDefinition ToolTip="Input-fält" Width="292*"/>
+            <ColumnDefinition ToolTip="Knappar" Width="122"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0" Grid.Row="2" Content="Funktion:" Grid.ColumnSpan="2" Margin="10,10,273,30" Grid.RowSpan="2"/>
-        <Label Grid.Column="0" Grid.Row="3" Content="Kontonr:" Grid.ColumnSpan="2" Margin="10,10,273,-10"/>
 
-        <Label Grid.Column="0" Grid.Row="0" Content="Betalnr:" Margin="10,7,0,7"/>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Betalnr:</Label>
         <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="10,9,0,9" TextWrapping="Wrap" VerticalAlignment="Center" Width="30" BorderThickness="3"/>
-        <Button x:Name="btnNew" Content="F2=Ny/Sök" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,10,9" VerticalAlignment="Center" Width="112" Height="22"/>
-        <Button x:Name="btnPrevious" Content="PgUp=Föregående" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,10,9" VerticalAlignment="Center" Width="112" Height="22"/>
+        <Button x:Name="btnNew" Content="F2=Ny/Sök" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,4,9" Width="112"/>
+        <Button x:Name="btnPrevious" Content="PgUp=Föregående" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Margin="0,9,4,9" Width="112"/>
 
-        <Label Grid.Column="0" Grid.Row="1" Content="Benämning:" Grid.ColumnSpan="2" Margin="10,10,273,30" Grid.RowSpan="2"/>
-        <Button x:Name="btnNext" Content="PgDn=Nästa" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Margin="0,9,10,9" VerticalAlignment="Center" Width="112" Height="22"/>
+        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center">Benämning:</Label>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="22" Margin="10,9,0,9" TextWrapping="Wrap" VerticalAlignment="Center" Width="160" BorderThickness="3"/>
-            <CheckBox Content="Spärrat" Width="90" Margin="10"/>
+            <TextBox x:Name="tbDescription" HorizontalAlignment="Stretch" Height="22" Margin="10,9,0,9" TextWrapping="Wrap" Width="160" BorderThickness="3" VerticalAlignment="Center"/>
+            <CheckBox Content="Spärrat" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center"/>
         </StackPanel>
+        <Button x:Name="btnNext" Content="PgDn=Nästa" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Margin="4" Width="112"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Funktion:</Label>
+        
+        <Label Grid.Column="0" Grid.Row="3" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
+        <Label x:Name="lblWindowWidth" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding Width, ElementName=myWindow}" />
+        <Label x:Name="lblWindowHeight" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />
+        <Label Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />
     </Grid>
+    </Viewbox>
 </Window>
