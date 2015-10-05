@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SidCatUI"
         mc:Ignorable="d"
-        Title="SidCat PoC" 
-        Height="203" MinHeight="203"
+        Title="SidCat PoC Betalningsmedel" 
+        Height="360" MinHeight="360"
         Width="525" MinWidth="525"
         Background="Azure">
     <Viewbox Stretch="Fill">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"           Background="AliceBlue">
-            <!--ShowGridLines="True"-->
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition ToolTip="Betalningssättnummer" Height="10*"/>
                 <RowDefinition ToolTip="Benämning" Height="10*"/>
                 <RowDefinition ToolTip="Funktion" Height="10*"/>
                 <RowDefinition ToolTip="Kontonummer" Height="10*"/>
+                <RowDefinition ToolTip="Delat betalningssätt" Height="7*"/>
+                <RowDefinition ToolTip="Referens" Height="7*"/>
+                <RowDefinition ToolTip="Kassalåda" Height="7*"/>
+                <RowDefinition ToolTip="Kassarapport" Height="7*"/>
+                <RowDefinition ToolTip="Knappar" Height="10*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ToolTip="Ledtexter" Width="103*" MinWidth="103"/>
@@ -28,7 +32,6 @@
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                 <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="4" TextWrapping="NoWrap" VerticalAlignment="Center" Width="30" BorderThickness="3"/>
                 <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" >Spärrat</CheckBox>
-                <Button x:Name="btnNew" HorizontalAlignment="Right" Margin="4" Width="112">F2=Ny/Sök</Button>
             </StackPanel>
             <Button x:Name="btnPrevious" Content="PgUp=Föregående" Grid.Column="2" Grid.Row="0" Margin="4" Width="112"/>
 
@@ -36,10 +39,9 @@
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="22" Margin="4" Width="200" BorderThickness="3" VerticalAlignment="Center"/>
             </StackPanel>
-            <Button x:Name="btnNext" Content="PgDn=Nästa" Grid.Column="2" Grid.Row="1" Margin="4" Width="112"/>
+            <Button x:Name="btnNext" Grid.Column="2" Grid.Row="1" Margin="4" Width="112">PgDn=Nästa</Button>
 
             <Label Grid.Column="0" Grid.Row="2" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Funktion:</Label>
-            <!--<StackPanel Grid.Column="1" Grid.Row="2" Margin="4">-->
             <ComboBox Grid.Column="1" Grid.Row="2" Margin="4" SelectedIndex="0">
                 <ComboBoxItem>(Välj funktion 1 - 6)</ComboBoxItem>
                 <ComboBoxItem>1. Kontant och övriga, (check och kort man.)</ComboBoxItem>
@@ -49,8 +51,6 @@
                 <ComboBoxItem>5. Rabattkupong mm. Kontosätts direkt vid betalningen</ComboBoxItem>
                 <ComboBoxItem>6. Firmafinans bonuscheck. Endast om betalningsmedel</ComboBoxItem>
             </ComboBox>
-            <!--</StackPanel>-->
-            <Button Grid.Column="2" Grid.Row="2" Margin="4">F5=Utskrift</Button>
 
             <Label Grid.Column="0" Grid.Row="3" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="4" >
@@ -71,6 +71,26 @@
                     <TextBox ></TextBox>
                 </StackPanel>
             </StackPanel>
+
+            <Label Grid.Column="0" Grid.Row="4" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Delat betalningssätt:</Label>
+            <CheckBox x:Name="cbSplitPaymentAllowed" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Referens:</Label>
+            <CheckBox x:Name="cbReferenceRequired" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"/>
+            <Button Grid.Column="2" Grid.Row="5" Margin="4">F5=Utskrift</Button>
+
+            <Label Grid.Column="0" Grid.Row="6" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kassalåda:</Label>
+            <CheckBox x:Name="cbCashBox" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"/>
+            <Button x:Name="btnHistory" Grid.Column="2" Grid.Row="6" Margin="4" Width="112">F7=Historik</Button>
+
+            <Label Grid.Column="0" Grid.Row="7" Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center">Kassarapport:</Label>
+            <CheckBox x:Name="cbCashReport" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"/>
+
+            <Button x:Name="btnEscape" Grid.Column="0" Grid.Row="8" Margin="4" Width="112">Esc=Stäng</Button>
+            <Button x:Name="btnDelete" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="4" Width="112">F6=Radera</Button>
+            <Button x:Name="btnNew" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Right" Margin="4" Width="112">F2=Ny/Sök</Button>
+            <Button x:Name="btnSave" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" Margin="4" Width="112">F3=Spara</Button>
+
             <!--<Label x:Name="lblWindowWidth" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding Width, ElementName=myWindow}" />
         <Label x:Name="lblWindowHeight" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="{Binding Height, ElementName=myWindow}" />-->
         </Grid>
