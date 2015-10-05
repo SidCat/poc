@@ -5,19 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SidCatUI"
         mc:Ignorable="d"
-        Title="SidCat PoC" SizeToContent="Height" Width="525"
+        Title="SidCat PoC" 
+        Height="203" MinHeight="203"
+        Width="525" MinWidth="525"
         Background="Azure">
-    <Viewbox>
-    <Grid Height="auto" ShowGridLines="True">
+    <Viewbox Stretch="Fill">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowGridLines="True" Background="AliceBlue">
         <Grid.RowDefinitions>
-            <RowDefinition ToolTip="Betalningssättnummer" Height="39*"/>
-            <RowDefinition ToolTip="Benämning" Height="39*"/>
-            <RowDefinition ToolTip="Funktion" Height="39*"/>
-            <RowDefinition ToolTip="Kontonummer" Height="39*"/>
+            <RowDefinition ToolTip="Betalningssättnummer" Height="10*"/>
+            <RowDefinition ToolTip="Benämning" Height="10*"/>
+            <RowDefinition ToolTip="Funktion" Height="10*"/>
+            <RowDefinition ToolTip="Kontonummer" Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition ToolTip="Ledtexter" Width="103"/>
-            <ColumnDefinition ToolTip="Input-fält" Width="292*"/>
+            <ColumnDefinition ToolTip="Ledtexter" Width="103*" MinWidth="103"/>
+            <ColumnDefinition ToolTip="Input-fält" Width="292*" MinWidth="292"/>
             <ColumnDefinition ToolTip="Knappar" Width="122"/>
         </Grid.ColumnDefinitions>
 
