@@ -10,6 +10,17 @@
         Width="525" MinWidth="525"
         Background="Azure">
     <Window.Resources>
+        <ControlTemplate x:Key="MyInputFieldTemplate" TargetType="{x:Type TextBox}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsFocused" Value="true">
+                    <Setter Property="BorderBrush" Value="Green"/>
+                    <Setter Property="BorderThickness" Value="3"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
         <ControlTemplate x:Key="MyButtonTemplate" TargetType="{x:Type Button}">
             <Grid>
                 <Border x:Name="thisborder" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"/>
@@ -76,7 +87,7 @@
 
             <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="4" VerticalAlignment="Center"                    ToolTip="Här lagras samtliga betalningsmedel som kan användas vid betalning i TACDIS Cash. Vid betalningen visas samtliga registrerade betalningsmedel i en listruta. ">Betalnr:</Label>
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
-                <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="4" TextWrapping="NoWrap" VerticalAlignment="Center" Width="30" BorderThickness="3"
+                <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" Template="{StaticResource MyInputFieldTemplate}" HorizontalAlignment="Left" Height="22" Margin="4" TextWrapping="NoWrap" VerticalAlignment="Center" Width="30" BorderThickness="3"
                          ToolTip="Betalningssättnummer 1 - 99. Betalnummer 1 är alltid kontant."/>
                 <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" ToolTip="Betalningssättet får ej användas vid betalning.">Spärrat</CheckBox>
             </StackPanel>
