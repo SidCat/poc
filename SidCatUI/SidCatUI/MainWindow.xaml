@@ -70,7 +70,8 @@
         <!--STYLES-->
         <Style TargetType="Label">
             <Setter Property="Margin" Value="4"/>
-
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Width" Value="112"/>
@@ -115,7 +116,7 @@
                 <ColumnDefinition ToolTip="Knappar" Width="122"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            <Label Grid.Column="0" Grid.Row="0"  
                    ToolTip="Här lagras samtliga betalningsmedel som kan användas vid betalning i TACDIS Cash. Vid betalningen visas samtliga registrerade betalningsmedel i en listruta. ">Betalnr:</Label>
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                 <TextBox x:Name="tbPaymentMethodNum" Grid.Column="1" Template="{StaticResource MyInputFieldTemplate}" HorizontalAlignment="Left" Height="22" TextWrapping="NoWrap" VerticalAlignment="Center" Width="30" BorderThickness="3"
@@ -124,14 +125,14 @@
             </StackPanel>
             <Button x:Name="btnPrevious" Grid.Column="2" Grid.Row="0" Template="{StaticResource MyButtonTemplate}" Content="PgUp=Föregående" ToolTip="Bläddrar till föregående post."/>
 
-            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">Benämning:</Label>
+            <Label Grid.Column="0" Grid.Row="1">Benämning:</Label>
             <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBox x:Name="tbDescription" HorizontalAlignment="Left" Height="22" Width="200" BorderThickness="3" VerticalAlignment="Center"
                          ToolTip="Betalsättsbenämning, max 15 tecken"/>
             </StackPanel>
             <Button x:Name="btnNext" Grid.Column="2" Grid.Row="1" Template="{StaticResource MyButtonTemplate}" ToolTip="Bläddrar till nästa post.">PgDn=Nästa</Button>
 
-            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">Funktion:</Label>
+            <Label Grid.Column="0" Grid.Row="2" >Funktion:</Label>
             <ComboBox Grid.Column="1" Grid.Row="2" Margin="4" SelectedIndex="0">
                 <ComboBoxItem>(Välj funktion 1 - 6)</ComboBoxItem>
                 <ComboBoxItem>1. Kontant och övriga, (check och kort man.)</ComboBoxItem>
@@ -142,7 +143,7 @@
                 <ComboBoxItem>6. Firmafinans bonuscheck. Endast om betalningsmedel</ComboBoxItem>
             </ComboBox>
 
-            <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
+            <Label Grid.Column="0" Grid.Row="3" >Kontonr:</Label>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" >
                 <StackPanel Orientation="Vertical" Width="90" >
                     <Label HorizontalAlignment="Left">Baskonto:</Label>
@@ -162,21 +163,21 @@
                 </StackPanel>
             </StackPanel>
 
-            <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center">Delat betalningssätt:</Label>
+            <Label Grid.Column="0" Grid.Row="4" >Delat betalningssätt:</Label>
             <CheckBox x:Name="cbSplitPaymentAllowed" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"
                       ToolTip="Delat betalningssätt tillåtet för detta betalningsmedel. (Motsats: Hela köpbeloppet måste betalas med detta betalningsmedel.) Aktiveras normalt för samtliga utom smitning."/>
 
-            <Label Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center">Referens:</Label>
+            <Label Grid.Column="0" Grid.Row="5" >Referens:</Label>
             <CheckBox x:Name="cbReferenceRequired" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"
                       ToolTip="Referens måste anges i betalningfönstret med detta betalningsmedel. (Motsats: Referensnummer krävs inte, går inte heller att ange.)"/>
             <Button Grid.Column="2" Grid.Row="5" Template="{StaticResource MyButtonTemplate}" ToolTip="Utskrift på rapportskrivare.">F5=Utskrift</Button>
 
-            <Label Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center">Kassalåda:</Label>
+            <Label Grid.Column="0" Grid.Row="6" >Kassalåda:</Label>
             <CheckBox x:Name="cbCashBox" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left" 
                       ToolTip="Ansluten kassalåda öppnas efter det att hela köpbeloppet betalats. (Motsats: Kassalådan öppnas inte. Kan dock öppnas manuellt.) Aktiveras normalt för alla betalningsmedel utom Firmakort."/>
             <Button x:Name="btnHistory" Grid.Column="2" Grid.Row="6" Template="{StaticResource MyButtonTemplate}" ToolTip="Visar historik över utförda ändringar.">F7=Historik</Button>
 
-            <Label Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center">Kassarapport:</Label>
+            <Label Grid.Column="0" Grid.Row="7" >Kassarapport:</Label>
             <CheckBox x:Name="cbCashReport" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Margin="4" HorizontalAlignment="Left"
                       ToolTip="Betalning skall summeras under Redovisat belopp på kassarapport, t ex kontant och kuponger."/>
 
