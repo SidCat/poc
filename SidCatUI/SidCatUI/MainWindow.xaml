@@ -70,6 +70,7 @@
         <!--STYLES-->
         <Style TargetType="Label">
             <Setter Property="Margin" Value="4"/>
+
         </Style>
         <Style TargetType="Button">
             <Setter Property="Width" Value="112"/>
@@ -89,7 +90,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="4"/>
+        </Style>
     </Window.Resources>
+    
+    <!--VIEWBOX allows content to be zoomed-->
     <Viewbox Stretch="Fill">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -137,20 +143,20 @@
             </ComboBox>
 
             <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center">Kontonr:</Label>
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="4" >
-                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" >
+                <StackPanel Orientation="Vertical" Width="90" >
                     <Label HorizontalAlignment="Left">Baskonto:</Label>
                     <TextBox ToolTip="Debetkonto för betalningsmedlet (max 6 tecken)">2331K</TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Width="100" Margin="4">
+                <StackPanel Orientation="Vertical" Width="100" >
                     <Label HorizontalAlignment="Left">Konstnadsställe:</Label>
                     <TextBox ToolTip="Debetkonto för betalningsmedlet (max 6 tecken)"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+                <StackPanel Orientation="Vertical" Width="90" >
                     <Label HorizontalAlignment="Left">Produkt:</Label>
                     <TextBox ToolTip="Debetkonto för betalningsmedlet (max 6 tecken)"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Width="90" Margin="4">
+                <StackPanel Orientation="Vertical" Width="90" >
                     <Label HorizontalAlignment="Left">Projekt:</Label>
                     <TextBox ToolTip="Debetkonto för betalningsmedlet (max 6 tecken)"></TextBox>
                 </StackPanel>
